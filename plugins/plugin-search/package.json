@@ -1,0 +1,62 @@
+{
+  "name": "@vuepress-plume/plugin-search",
+  "type": "module",
+  "version": "1.0.0-rc.148",
+  "description": "The Plugin for VuePress 2 - local search",
+  "author": "pengzhanbo <volodymyr@foxmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/pengzhanbo/vuepress-theme-plume#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pengzhanbo/vuepress-theme-plume.git",
+    "directory": "plugins/plugin-search"
+  },
+  "bugs": {
+    "url": "https://github.com/pengzhanbo/vuepress-theme-plume/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/node/index.d.ts",
+      "import": "./lib/node/index.js"
+    },
+    "./client": {
+      "types": "./lib/client/index.d.ts",
+      "import": "./lib/client/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/node/index.js",
+  "types": "./lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "pnpm run tsdown && pnpm run copy",
+    "clean": "rimraf --glob ./lib",
+    "copy": "cpx \"src/**/*.{d.ts,vue,css,scss,jpg,png}\" lib",
+    "tsdown": "tsdown"
+  },
+  "peerDependencies": {
+    "vuepress": "catalog:vuepress"
+  },
+  "dependencies": {
+    "@vuepress/helper": "catalog:vuepress",
+    "@vueuse/core": "catalog:prod",
+    "@vueuse/integrations": "catalog:prod",
+    "chokidar": "catalog:prod",
+    "focus-trap": "catalog:prod",
+    "mark.js": "catalog:prod",
+    "minisearch": "catalog:prod",
+    "p-map": "catalog:prod",
+    "vue": "catalog:prod"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keyword": [
+    "VuePress",
+    "vuepress plugin",
+    "mini search",
+    "vuepress-plugin-search"
+  ]
+}

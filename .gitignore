@@ -1,0 +1,17 @@
+**/node_modules/
+
+**/.vuepress/.cache
+**/.vuepress/.temp
+**/.vuepress/dist
+
+lib/
+dist/
+
+.DS_Store
+
+*.log
+*.tsbuildinfo
+.mind
+
+coverage/
+.idea
