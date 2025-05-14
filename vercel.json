@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm install -g pnpm && pnpm install && pnpm build:package && mkdir -p ./docs/node_modules/vuepress-theme-plume/ && cp -r ./theme/lib ./docs/node_modules/vuepress-theme-plume/ && cd docs && pnpm docs:build",
+  "buildCommand": "npm install -g pnpm && pnpm install && pnpm -r --stream build && mkdir -p ./docs/node_modules/vuepress-theme-plume/ && cp -r ./theme/lib ./docs/node_modules/vuepress-theme-plume/ && cd docs && pnpm docs:build",
   "outputDirectory": "docs/.vuepress/dist",
   "framework": "vuepress",
   "installCommand": "npm install -g pnpm && pnpm install",
