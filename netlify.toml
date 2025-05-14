@@ -1,0 +1,18 @@
+[build]
+# 确保使用项目根目录
+base = "/"
+# 安装并链接依赖
+command = """
+    pnpm install
+    mkdir -p ./docs/node_modules/vuepress-theme-plume/
+    cd theme && pnpm build && cp -r lib ../docs/node_modules/vuepress-theme-plume/
+    cd ../plugins/plugin-md-power && pnpm build
+    cd ../../plugins/plugin-search && pnpm build
+    cd ../../docs && pnpm docs:build
+  """
+# 指定发布目录
+publish = "docs/.vuepress/dist"
+
+[build.environment]
+NODE_VERSION = "20"
+NPM_FLAGS = "--shamefully-hoist"
