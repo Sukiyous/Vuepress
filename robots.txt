@@ -1,0 +1,4 @@
+Sitemap: https://theme-plume.vuejs.press/Vuepress/sitemap.xml
+
+User-agent:*
+Disallow:
