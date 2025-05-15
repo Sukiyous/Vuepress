@@ -10,7 +10,7 @@ const pnpmWorkspace = fs.readFileSync(path.resolve(__dirname, '../../pnpm-worksp
 const vuepress = pnpmWorkspace.match(/vuepress:\s(2.+)/)?.[1] || ''
 
 export default defineUserConfig({
-  base: '/Vuepress/',
+  base: '/',
   lang: 'zh-CN',
   source: path.resolve(__dirname, '../'),
   public: path.resolve(__dirname, 'public'),
