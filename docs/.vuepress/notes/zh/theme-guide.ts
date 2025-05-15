@@ -13,6 +13,7 @@ export const themeGuide: ThemeNote = defineNoteConfig({
       items: [
         'intro',
         'mulu',
+        'SettingsCenter',
       ],
     },
     {
