@@ -10,7 +10,7 @@ const pnpmWorkspace = fs.readFileSync(path.resolve(__dirname, '../../pnpm-worksp
 const vuepress = pnpmWorkspace.match(/vuepress:\s(2.+)/)?.[1] || ''
 
 export default defineUserConfig({
-  base: '/',
+  base: '/Vuepress/',
   lang: 'zh-CN',
   source: path.resolve(__dirname, '../'),
   public: path.resolve(__dirname, 'public'),
@@ -20,8 +20,8 @@ export default defineUserConfig({
   },
 
   head: [
-    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
-    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/Vuepress/favicon-32x32.png' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/Vuepress/favicon-16x16.png' }],
     ['meta', { name: 'google-site-verification', content: 'AaTP7bapCAcoO9ZGE67ilpy99GL6tYqtD30tRHjO9Ps' }],
   ],
 
