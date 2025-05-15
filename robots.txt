@@ -1,4 +1,4 @@
-Sitemap: https://theme-plume.vuejs.press/Vuepress/sitemap.xml
+Sitemap: https://theme-plume.vuejs.press/sitemap.xml
 
 User-agent:*
 Disallow:
