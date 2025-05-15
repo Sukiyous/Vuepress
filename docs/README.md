@@ -8,7 +8,7 @@ config:
     hero:
       name: 云药家
       tagline: Yun Yao Jia
-      text: 一个简约易用的  功能丰富的知识文档 
+      text: 一个简约易用的功能丰富的知识文档
       actions:
         -
           theme: brand
