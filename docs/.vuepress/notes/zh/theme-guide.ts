@@ -6,6 +6,16 @@ export const themeGuide: ThemeNote = defineNoteConfig({
   link: '/guide/',
   sidebar: [
     {
+      text: '上手流程',
+      collapsed: false,
+      icon: 'carbon:idea',
+      prefix: 'quick-start',
+      items: [
+        'intro',
+        'mulu',
+      ],
+    },
+    {
       text: '基础档案',
       collapsed: false,
       icon: 'carbon:idea',
