@@ -8,21 +8,27 @@ export default defineThemeConfig({
   logo: '/plume.png',
 
   profile: {
+    // 头像图片路径
     avatar: '/plume.png',
+    // 名称
     name: 'Plume Theme',
+    // 描述信息
     description: 'The Theme for Vuepress 2.0',
+    // 地理位置
     location: 'GuangZhou, China',
+    // 组织/公司
     organization: 'pengzhanbo',
   },
 
   social: [
-    { icon: 'github', link: 'https://github.com/pengzhanbo/vuepress-theme-plume' },
-    { icon: 'qq', link: 'https://qm.qq.com/q/FbPPoOIscE' },
+    { icon: 'github', link: 'https://github.com/Sukiyous/Vuepress' },
+    { icon: 'qq', link: 'https://qm.qq.com/q/szC5XmCQ5G' },
   ],
   navbarSocialInclude: ['github', 'qq'],
 
   footer: {
-    copyright: 'Copyright © 2021-present pengzhanbo',
+    message: '云药家',
+    copyright: 'Copyright © 2025-present Djc',
   },
 
   locales: {

@@ -5,7 +5,8 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export const theme: Theme = plumeTheme({
   hostname: process.env.SITE_HOST || 'https://theme-plume.vuejs.press',
 
-  docsRepo: 'https://github.com/pengzhanbo/vuepress-theme-plume',
+  //docsRepo: 'https://github.com/pengzhanbo/vuepress-theme-plume',
+  docsRepo: 'https://github.com/Sukiyous/Vuepress',//编辑此页指向GitHub地址
   docsDir: 'docs',
   changelog: { maxCount: 10 },
   contributors: { mode: 'block' },
@@ -52,8 +53,8 @@ export const theme: Theme = plumeTheme({
       kotlin: true,
     },
   },
-
-  comment: {
+// 禁用评论系统Giscus
+  /**comment: {
     provider: 'Giscus',
     comment: true,
     repo: 'pengzhanbo/vuepress-theme-plume',
@@ -66,6 +67,8 @@ export const theme: Theme = plumeTheme({
     darkTheme: 'dark_protanopia',
     lightTheme: 'light_protanopia',
   },
+*/
+comment:false,
 
   watermark: {
     enabled: false,
