@@ -1,3 +1,8 @@
+---
+title: gitee-token-guide
+createTime: 2025/05/17 03:20:35
+permalink: /article/bkdeedze/
+---
 # Gitee 访问令牌设置指南
 
 为了让自动部署工作流能够更新 Gitee Pages，您需要创建并配置 Gitee 访问令牌。

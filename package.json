@@ -52,6 +52,7 @@
     "@types/stylus": "catalog:dev",
     "@types/webpack-env": "catalog:dev",
     "@vitest/coverage-istanbul": "catalog:dev",
+    "@vuepress/plugin-pwa": "^1.9.10",
     "bumpp": "catalog:dev",
     "commitizen": "catalog:dev",
     "conventional-changelog-cli": "catalog:dev",
@@ -83,5 +84,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@vue/component-compiler-utils": "^3.3.0",
+    "lru-cache": "6.0.0",
+    "markdown-it-emoji": "^2.0.0"
   }
 }

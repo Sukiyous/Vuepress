@@ -1,3 +1,8 @@
+---
+title: gitee-pages-deployment
+createTime: 2025/05/17 03:08:18
+permalink: /article/6smk8ihy/
+---
 # Gitee Pages 自动部署指南
 
 本指南将帮助您配置 Gitee Pages 服务以自动部署您的 VuePress 网站。

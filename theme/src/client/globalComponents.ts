@@ -8,6 +8,7 @@ import VPLinkCard from '@theme/global/VPLinkCard.vue'
 import VPHomeBox from '@theme/Home/VPHomeBox.vue'
 import VPButton from '@theme/VPButton.vue'
 import VPIcon from '@theme/VPIcon.vue'
+import OptimizedImage from '@theme/global/OptimizedImage.vue'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h, resolveComponent } from 'vue'
 
@@ -37,6 +38,8 @@ export function globalComponents(app: App): void {
 
   app.component('HomeBox', VPHomeBox)
   app.component('VPHomeBox', VPHomeBox)
+
+  app.component('OptimizedImage', OptimizedImage)
 
   app.component('DocComment', (props) => {
     if (hasGlobalComponent('CommentService')) {

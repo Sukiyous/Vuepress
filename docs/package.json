@@ -20,6 +20,7 @@
     "echarts": "catalog:prod",
     "flowchart.ts": "catalog:prod",
     "http-server": "catalog:dev",
+    "markdown-it-emoji": "^3.0.0",
     "markmap-lib": "catalog:prod",
     "markmap-toolbar": "catalog:prod",
     "markmap-view": "catalog:prod",
