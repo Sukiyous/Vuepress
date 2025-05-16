@@ -1,0 +1,58 @@
+name: 部署 VuePress 到 Gitee Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        run: |
+          # 克隆主分支代码
+          git clone https://${{ secrets.GITEE_USERNAME }}:${{ secrets.GITEE_PASSWORD }}@gitee.com/${{ secrets.GITEE_REPO }}.git /tmp/vuepress-site
+          cd /tmp/vuepress-site
+          git config --global user.name "Gitee Pages Bot"
+          git config --global user.email "gitee-pages-bot@example.com"
+
+      - name: 设置 Node.js
+        run: |
+          curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+          apt-get install -y nodejs
+
+      - name: 设置 pnpm
+        run: |
+          npm install -g pnpm@10.10.0
+
+      - name: 安装依赖
+        run: |
+          cd /tmp/vuepress-site
+          pnpm install --frozen-lockfile
+
+      - name: 构建网站
+        run: |
+          cd /tmp/vuepress-site
+          pnpm run docs:build
+
+      - name: 部署到 Gitee Pages
+        run: |
+          # 创建临时目录存储构建结果
+          mkdir -p /tmp/gh-pages
+          cp -r /tmp/vuepress-site/docs/.vuepress/dist/* /tmp/gh-pages/
+
+          # 推送到 gh-pages 分支
+          cd /tmp/gh-pages
+          git init
+          git remote add origin https://${{ secrets.GITEE_USERNAME }}:${{ secrets.GITEE_PASSWORD }}@gitee.com/${{ secrets.GITEE_REPO }}.git
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Update Gitee Pages"
+          git push -f origin gh-pages
+
+      - name: 更新 Gitee Pages
+        run: |
+          curl -X POST --header 'Content-Type: application/json;charset=UTF-8' 'https://gitee.com/api/v5/repos/${{ secrets.GITEE_REPO }}/pages/builds' -d '{"access_token":"${{ secrets.GITEE_TOKEN }}"}'
