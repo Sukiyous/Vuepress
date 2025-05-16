@@ -8,9 +8,10 @@ export const theme: Theme = plumeTheme({
   //docsRepo: 'https://github.com/pengzhanbo/vuepress-theme-plume',
   docsRepo: 'https://github.com/Sukiyous/Vuepress',//编辑此页指向GitHub地址
   docsDir: 'docs',
-  changelog: { maxCount: 10 },
-  contributors: { mode: 'block' },
-
+  //changelog: { maxCount: 10 },//编辑此页更新日志
+  //contributors: { mode: 'block' },//编辑此页贡献者
+  changelog: false, // 禁用更新日志
+  contributors: false, // 禁用贡献者显示
   search: { provider: 'local' },
 
   codeHighlighter: {
