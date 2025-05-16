@@ -1,0 +1,41 @@
+name: 部署 VuePress 网站
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 设置 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建网站
+        run: pnpm run docs:build
+
+      - name: 部署到 Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          gitee-repo: ${{ secrets.GITEE_REPO }}
+          branch: gh-pages
+          directory: docs/.vuepress/dist
