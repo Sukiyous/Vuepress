@@ -26,12 +26,19 @@ jobs:
 
       - name: 设置 pnpm
         run: |
-          npm install -g pnpm@10.10.0
+          npm install -g pnpm@8.6.0
+
+      - name: 创建自定义 .npmrc
+        run: |
+          cd /tmp/vuepress-site
+          echo "registry=https://registry.npmmirror.com/" > .npmrc
+          echo "catalog:dev=latest" >> .npmrc
 
       - name: 安装依赖
         run: |
           cd /tmp/vuepress-site
-          pnpm install --frozen-lockfile
+          sed -i 's/"catalog:dev"/"\*"/g' package.json
+          pnpm install
 
       - name: 构建网站
         run: |
