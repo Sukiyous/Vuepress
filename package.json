@@ -38,6 +38,11 @@
     "release:sync": "node scripts/mirror-sync.mjs",
     "release:version": "bumpp package.json plugins/*/package.json theme/package.json cli/package.json --execute=\"pnpm release:changelog\" --commit \"build: publish v%s\" --all --tag --push"
   },
+  "dependencies": {
+    "@vue/component-compiler-utils": "catalog:",
+    "lru-cache": "catalog:conflicts_prod_6_0_0",
+    "markdown-it-emoji": "catalog:conflicts_conflicts_markdown-it-emoji_h3_0_0_h2_0_0"
+  },
   "devDependencies": {
     "@commitlint/cli": "catalog:dev",
     "@commitlint/config-conventional": "catalog:dev",
@@ -51,7 +56,7 @@
     "@types/stylus": "catalog:dev",
     "@types/webpack-env": "catalog:dev",
     "@vitest/coverage-istanbul": "catalog:dev",
-    "@vuepress/plugin-pwa": "^1.9.10",
+    "@vuepress/plugin-pwa": "catalog:",
     "bumpp": "catalog:dev",
     "commitizen": "catalog:dev",
     "conventional-changelog-cli": "catalog:dev",
@@ -83,10 +88,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@vue/component-compiler-utils": "^3.3.0",
-    "lru-cache": "6.0.0",
-    "markdown-it-emoji": "^2.0.0"
   }
 }
