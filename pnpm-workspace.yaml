@@ -139,17 +139,9 @@ catalogs:
     '@vuepress/shiki-twoslash': 2.0.0-rc.99
     vuepress: 2.0.0-rc.22
     vuepress-plugin-md-enhance: 2.0.0-rc.83
-  conflicts_prod_6_0_0:
-    lru-cache: 6.0.0
-  conflicts_markdown-it-emoji_h3_0_0:
-    markdown-it-emoji: ^3.0.0
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
   - esbuild
   - unrs-resolver
-catalog:
-  '@vue/component-compiler-utils': ^3.3.0
-  '@vuepress/plugin-pwa': ^1.9.10
-  markdown-it-emoji: ^2.0.0

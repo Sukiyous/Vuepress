@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm install -g pnpm && pnpm install && pnpm -r --stream build && mkdir -p ./docs/node_modules/vuepress-theme-plume/ && cp -r ./theme/lib ./docs/node_modules/vuepress-theme-plume/ && cd docs && pnpm docs:build",
+  "outputDirectory": "docs/.vuepress/dist",
+  "framework": "vuepress",
+  "installCommand": "npm install -g pnpm && pnpm install",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "env": {
+    "NODE_VERSION": "20"
+  }
+}

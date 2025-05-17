@@ -1,0 +1,21 @@
+[build]
+# 确保使用项目根目录
+base = "/"
+# 安装并链接依赖
+command = """
+    npm install -g pnpm
+    pnpm install
+    pnpm build:package
+    # 确保主题库文件能被文档项目正确引用
+    mkdir -p ./docs/node_modules/vuepress-theme-plume/
+    cp -r ./theme/lib ./docs/node_modules/vuepress-theme-plume/
+    cd docs && pnpm docs:build
+  """
+# 指定发布目录
+publish = "docs/.vuepress/dist"
+
+[build.environment]
+NODE_VERSION = "20"
+NPM_FLAGS = "--shamefully-hoist"
+# 添加这个以确保 CI 环境中使用 pnpm
+CI = "true"
