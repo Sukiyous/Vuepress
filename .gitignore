@@ -1,17 +1,51 @@
+# 依赖目录
+node_modules/
 **/node_modules/
 
-**/.vuepress/.cache
-**/.vuepress/.temp
-**/.vuepress/dist
+# VuePress临时文件和构建产物
+**/.vuepress/.cache/
+**/.vuepress/.temp/
+**/.vuepress/dist/
+**/.vuepress/public/images/icons/
 
+# 构建输出
 lib/
 dist/
+temp/
 
+# 编辑器和系统文件
 .DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+Thumbs.db
 
+# 日志文件
 *.log
-*.tsbuildinfo
-.mind
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
+# TypeScript相关
+*.tsbuildinfo
+.tscache/
+
+# 测试和覆盖率
 coverage/
-.idea
+.nyc_output/
+
+# 环境变量和本地配置
+.env
+.env.local
+.env.*.local
+
+# 其他临时文件
+.mind
+*.bak
+*.tmp
+*.temp

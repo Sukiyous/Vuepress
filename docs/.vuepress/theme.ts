@@ -5,14 +5,15 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export const theme: Theme = plumeTheme({
   hostname: process.env.SITE_HOST || 'https://theme-plume.vuejs.press',
 
-  //docsRepo: 'https://github.com/pengzhanbo/vuepress-theme-plume',
-  docsRepo: 'https://github.com/Sukiyous/Vuepress',//编辑此页指向GitHub地址
+  // docsRepo: 'https://github.com/pengzhanbo/vuepress-theme-plume',
+  docsRepo: 'https://github.com/Sukiyous/Vuepress', // 编辑此页指向GitHub地址
   docsDir: 'docs',
-  //changelog: { maxCount: 10 },//编辑此页更新日志
-  //contributors: { mode: 'block' },//编辑此页贡献者
+  // changelog: { maxCount: 10 },//编辑此页更新日志
+  // contributors: { mode: 'block' },//编辑此页贡献者
   changelog: false, // 禁用更新日志
   contributors: false, // 禁用贡献者显示
   search: { provider: 'local' },
+  blog: false, // 禁用博客功能
 
   codeHighlighter: {
     twoslash: true,
@@ -54,8 +55,9 @@ export const theme: Theme = plumeTheme({
       kotlin: true,
     },
   },
-// 禁用评论系统Giscus
-  /**comment: {
+  // 禁用评论系统Giscus
+  /**
+     comment: {
     provider: 'Giscus',
     comment: true,
     repo: 'pengzhanbo/vuepress-theme-plume',
@@ -68,8 +70,8 @@ export const theme: Theme = plumeTheme({
     darkTheme: 'dark_protanopia',
     lightTheme: 'light_protanopia',
   },
-*/
-comment:false,
+   */
+  comment: false,
 
   watermark: {
     enabled: false,
