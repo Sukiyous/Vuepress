@@ -34,15 +34,15 @@ jobs:
             ${{ runner.os }}-pnpm-
 
       - name: Install deps
-        run: pnpm install --frozen-lockfile || true
+        run: pnpm install --frozen-lockfile
 
       - name: Build Packages
-        run: pnpm build:package || true
+        run: pnpm build:package
 
       - name: Docs build
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run: pnpm docs:build || true
+        run: pnpm docs:build
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v3

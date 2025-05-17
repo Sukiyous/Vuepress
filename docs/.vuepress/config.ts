@@ -1,18 +1,16 @@
-import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
-import type { App, UserConfig } from 'vuepress'
-
+import type { UserConfig } from 'vuepress'
 import fs from 'node:fs'
 import path from 'node:path'
-import process from 'node:process'
-
 import { viteBundler } from '@vuepress/bundler-vite'
 import { addViteOptimizeDepsInclude, addViteSsrExternal } from '@vuepress/helper'
-import pwaPlugin from '@vuepress/plugin-pwa'
 import { defineUserConfig } from 'vuepress'
+import pwaPlugin from '@vuepress/plugin-pwa'
 import { theme } from './theme.js'
+import type { ViteBundlerOptions } from '@vuepress/bundler-vite'
+import type { App } from 'vuepress'
 
 const pnpmWorkspace = fs.readFileSync(path.resolve(__dirname, '../../pnpm-workspace.yaml'), 'utf-8')
-const vuepress = pnpmWorkspace.match(/vuepress:\s2.+/)?.[0]?.split(' ')[1] || ''
+const vuepress = pnpmWorkspace.match(/vuepress:\s(2.+)/)?.[1] || ''
 
 export default defineUserConfig({
   base: '/',
@@ -52,7 +50,7 @@ export default defineUserConfig({
         compress: {
           drop_console: process.env.NODE_ENV === 'production',
           drop_debugger: process.env.NODE_ENV === 'production',
-        },
+        }
       }
 
       // 配置资源压缩
@@ -61,8 +59,8 @@ export default defineUserConfig({
           manualChunks: {
             vue: ['vue', 'vue-router'],
             vendors: ['@vue/shared'],
-          },
-        },
+          }
+        }
       }
     }
   },
@@ -113,10 +111,10 @@ export default defineUserConfig({
                 name: 'vite:compression',
                 async generateBundle() {
                   try {
-                    const fs = await import('node:fs')
-                    const path = await import('node:path')
-                    const zlib = await import('node:zlib')
-                    const util = await import('node:util')
+                    const fs = await import('fs')
+                    const path = await import('path')
+                    const zlib = await import('zlib')
+                    const util = await import('util')
                     const compress = util.promisify(zlib.gzip)
 
                     const walkDir = async (dir: string) => {
@@ -126,8 +124,7 @@ export default defineUserConfig({
                         const stat = await fs.promises.stat(filePath)
                         if (stat.isDirectory()) {
                           await walkDir(filePath)
-                        }
-                        else if (/\.(?:js|css|html|svg|json)$/.test(file)) {
+                        } else if (/\.(js|css|html|svg|json)$/.test(file)) {
                           const content = await fs.promises.readFile(filePath)
                           const compressedContent = await compress(content)
                           await fs.promises.writeFile(`${filePath}.gz`, compressedContent)
@@ -136,18 +133,17 @@ export default defineUserConfig({
                     }
 
                     await walkDir(path.resolve(root, outDir))
-                    // 压缩完成
-                  }
-                  catch (error) {
+                    console.log('✓ Compression complete')
+                  } catch (error) {
                     console.error('压缩失败:', error)
                   }
-                },
-              },
+                }
+              }
             ]
-          },
-        },
-      ],
-    },
+          }
+        }
+      ]
+    }
   }),
   shouldPrefetch: false,
 

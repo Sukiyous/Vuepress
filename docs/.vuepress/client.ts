@@ -2,7 +2,7 @@ import type { ClientConfig } from 'vuepress/client'
 import { h } from 'vue'
 import { Layout } from 'vuepress-theme-plume/client'
 import { defineClientConfig } from 'vuepress/client'
-// import AsideNav from '~/components/AsideNav.vue'
+//import AsideNav from '~/components/AsideNav.vue'
 import { setupThemeColors } from '~/composables/theme-colors.js'
 
 export default defineClientConfig({

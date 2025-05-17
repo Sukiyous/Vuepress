@@ -1,5 +1,4 @@
 import type { App } from 'vue'
-import OptimizedImage from '@theme/global/OptimizedImage.vue'
 import VPBadge from '@theme/global/VPBadge.vue'
 import VPCard from '@theme/global/VPCard.vue'
 import VPCardGrid from '@theme/global/VPCardGrid.vue'
@@ -9,6 +8,7 @@ import VPLinkCard from '@theme/global/VPLinkCard.vue'
 import VPHomeBox from '@theme/Home/VPHomeBox.vue'
 import VPButton from '@theme/VPButton.vue'
 import VPIcon from '@theme/VPIcon.vue'
+import OptimizedImage from '@theme/global/OptimizedImage.vue'
 import { hasGlobalComponent } from '@vuepress/helper/client'
 import { h, resolveComponent } from 'vue'
 

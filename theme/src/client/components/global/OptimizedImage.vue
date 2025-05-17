@@ -1,31 +1,58 @@
+<template>
+  <div class="optimized-image-container" :style="containerStyle">
+    <picture v-if="isVisible">
+      <!-- WebP 格式 -->
+      <source
+        v-if="webpSrc"
+        :srcset="webpSrc"
+        type="image/webp"
+        :media="media"
+      />
+      <!-- 原始图片 -->
+      <img
+        :src="src"
+        :alt="alt"
+        :width="width"
+        :height="height"
+        loading="lazy"
+        decoding="async"
+        :class="['optimized-image', { 'optimized-image-loaded': loaded }]"
+        @load="onLoad"
+        @error="onError"
+      />
+    </picture>
+    <div v-if="!loaded && isVisible" class="optimized-image-placeholder" />
+  </div>
+</template>
+
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   src: {
     type: String,
-    required: true,
+    required: true
   },
   webpSrc: {
     type: String,
-    default: '',
+    default: ''
   },
   alt: {
     type: String,
-    default: '',
+    default: ''
   },
   width: {
     type: [String, Number],
-    default: null,
+    default: null
   },
   height: {
     type: [String, Number],
-    default: null,
+    default: null
   },
   media: {
     type: String,
-    default: '',
-  },
+    default: ''
+  }
 })
 
 const loaded = ref(false)
@@ -47,11 +74,11 @@ const containerStyle = computed(() => {
 })
 
 // 图片加载处理
-function onLoad() {
+const onLoad = () => {
   loaded.value = true
 }
 
-function onError() {
+const onError = () => {
   hasError.value = true
   loaded.value = true
 }
@@ -59,7 +86,7 @@ function onError() {
 // 懒加载处理
 let observer: IntersectionObserver | null = null
 
-function setupIntersectionObserver() {
+const setupIntersectionObserver = () => {
   // 如果浏览器支持 IntersectionObserver
   if ('IntersectionObserver' in window) {
     observer = new IntersectionObserver((entries) => {
@@ -74,15 +101,14 @@ function setupIntersectionObserver() {
       }
     }, {
       rootMargin: '200px', // 提前 200px 加载
-      threshold: 0,
+      threshold: 0
     })
 
     onMounted(() => {
       const el = document.querySelector('.optimized-image-container') as Element
       if (el && observer) {
         observer.observe(el)
-      }
-      else {
+      } else {
         // 降级：如果没有找到元素或不支持观察，直接显示
         isVisible.value = true
       }
@@ -94,8 +120,7 @@ function setupIntersectionObserver() {
         observer = null
       }
     })
-  }
-  else {
+  } else {
     // 降级：如果不支持 IntersectionObserver，直接显示图片
     isVisible.value = true
   }
@@ -104,33 +129,6 @@ function setupIntersectionObserver() {
 // 初始化懒加载
 setupIntersectionObserver()
 </script>
-
-<template>
-  <div class="optimized-image-container" :style="containerStyle">
-    <picture v-if="isVisible">
-      <!-- WebP 格式 -->
-      <source
-        v-if="webpSrc"
-        :srcset="webpSrc"
-        type="image/webp"
-        :media="media"
-      >
-      <!-- 原始图片 -->
-      <img
-        :src="src"
-        :alt="alt"
-        :width="width"
-        :height="height"
-        loading="lazy"
-        decoding="async"
-        class="optimized-image" :class="[{ 'optimized-image-loaded': loaded }]"
-        @load="onLoad"
-        @error="onError"
-      >
-    </picture>
-    <div v-if="!loaded && isVisible" class="optimized-image-placeholder" />
-  </div>
-</template>
 
 <style scoped>
 .optimized-image-container {

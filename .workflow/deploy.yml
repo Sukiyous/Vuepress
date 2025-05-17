@@ -29,7 +29,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 构建网站
-        run: pnpm run docs:build || true
+        run: pnpm run docs:build
 
       - name: 部署到 Gitee Pages
         uses: yanglbme/gitee-pages-action@main
