@@ -57,7 +57,6 @@ export default defineUserConfig({
       bundlerOptions.viteOptions.build.rollupOptions = {
         output: {
           manualChunks: {
-            vue: ['vue', 'vue-router'],
             vendors: ['@vue/shared'],
           }
         }
